@@ -12,11 +12,24 @@ for f in .??*; do
     [ "$f" = ".gitignore" ] && continue
     [ "$f" = ".git" ] && continue
     [ "$f" = ".gitconfig.local.template" ] && continue
+    [ "$f" = ".DS_Store" ] && continue
 
     ln -snfv ~/dotfiles/"$f" ~/
 done
 
 [ -e ~/.gitconfig.local ] || cp ~/dotfiles/.gitconfig.local.template ~/.gitconfig.local
+
+
+# bashrc
+cp .bashrc ~/.bashrc
+source ~/.bashrc 
+
+
+# installers
+
+./installers/homebrew.sh
+
+
 
 cat << END
 
