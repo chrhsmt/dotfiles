@@ -11,8 +11,9 @@ export HISTIGNORE=ls:ll:exit:cd:
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export PATH="/usr/local/sbin:$HOME/Library/Android/sdk/platform-tools/:$PATH"
 
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
-source $(brew --prefix)/etc/brew-wrap
+if [ -f /usr/local/etc/brew-wrap ];then
+	
+source /usr/local/etc/brew-wrap
 fi
 
 export EDITOR=$(which vim)
@@ -25,13 +26,17 @@ export IDF_PATH=$HOME/esp32/esp-idf
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#export SDKMAN_DIR="/Users/chihiro/.sdkman"
-#[[ -s "/Users/chihiro/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/chihiro/.sdkman/bin/sdkman-init.sh"
+export PATH="usr/local/opt/mysql@5.6/bin:$PATH"
 
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+# aws
+export "PATH=~/aws/bin:$PATH"
 
-export PATH="$(brew --prefix mysql@5.6)/bin:$PATH"
+#export PATH="~/.cabal/bin:$PATH"
+#export PATH="/Users/chihiro/.ghcup/bin:$PATH"
+#export PATH="/Users/chihiro/.ghcup/env:$PATH"
+
+export PATH="$PATH:/Users/chihiro/Documents/flutter/bin"
+export THOR_MERGE=mergetool_for_rails_generator
+
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH="/usr/local/opt/mongodb-community@3.4/bin:$PATH"
