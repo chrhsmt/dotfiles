@@ -1,0 +1,51 @@
+# ~/.tmuxinator/panoAuthor.yml
+
+name: "panoAuthor"
+root: ~/src/panoAuthor
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+# pre_window: rvm use 2.1.2@panoAuthor
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - git status
+        # - tail -f log/development.log
+        - bundle exec rails c
+        # - bundle exec rails db
+        - bundle exec guard
+        # - bundle exec rails s puma -b 0.0.0.0
+        - bundle exec rails s -b '0.0.0.0'
+        # docker
+        - docker-compose up
+  - dwarf:
+      layout: main-vertical
+      root: ~/src/dwarf
+      panes:
+        - git status
+        - bundle exec rackup
+  - module:
+      layout: main-vertical
+      # layout: even-horizontal
+      root: ~/src/cia-s3-utils
+      panes:
+        - git status
+        - bundle exec rake spec
+  # - server:
+  #     layout: tiled
+  #     panes:
+  #       - cd ~/git/cia-s3-utils
+  #       - cd ~/git/cia-s3-utils
+  #       - cd ~/git/cia-s3-utils
+#  - server: ssh -i ~/id_rssa chihiro@chrhsmt.com -p 10022

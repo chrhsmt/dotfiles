@@ -1,0 +1,28 @@
+# ~/.tmuxinator/mozart.yml
+
+name: "mozart"
+root: ~/src/mozart
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+# pre_window: rvm use 2.1.2@panoAuthor
+pre_window: export TERMINAL_NOTIFIER_BIN=/usr/local/Cellar/terminal-notifier/2.0.0/bin/terminal-notifier
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - git status
+        # - tail -f log/development.log
+        - bundle exec rails c
+        - bundle exec guard -i -c
+        - bundle exec rails s -b 0.0.0.0 -p 2000

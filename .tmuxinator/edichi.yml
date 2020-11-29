@@ -1,0 +1,32 @@
+# ~/.tmuxinator/edichi.yml
+
+name: "edichi"
+root: ~/src/mates/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+# pre_window: rvm use 2.1.2@panoAuthor
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+windows:
+  - editor:
+      layout: tiled
+      panes:
+        - cd echichi_rails && git status
+        # - tail -f log/development.log
+        - cd echichi_rails && docker-compose up
+        - cd edichi_for_coach && git status
+        - cd edichi_for_coach && npm run dev
+        - cd edichi_for_student && git status
+        - cd edichi_for_student && npm run dev
+        # - bundle exec guard
+        # - bundle exec rails s
+        # - cd ../ && docker-compose up

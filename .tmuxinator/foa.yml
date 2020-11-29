@@ -1,0 +1,27 @@
+# ~/.tmuxinator/foa.yml
+
+name: "foa"
+root: ~/src/basic/fo-analyze
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+# pre_window: rvm use 2.1.2@panoAuthor
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+windows:
+  - editor:
+      layout: tiled
+      panes:
+        - git status
+        - EXTERNAL_RAILS_PORT=3001 EXTERNAL_MONGO_PORT=27018 EXTERNAL_DYNAMODB_PORT=8001 EXTERNAL_POSTGRES_PORT=5433 EXTERNAL_REDIS_PORT=6380 docker-compose up
+        - docker-compose exec app bundle exec rails c
+        - docker-compose exec app bundle exec rails s -b '0.0.0.0'
+
