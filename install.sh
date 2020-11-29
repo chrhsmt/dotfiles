@@ -29,7 +29,23 @@ source ~/.bashrc
 
 ./installers/homebrew.sh
 
+# rbenv
+RUBYS=(2.0.0-p481 2.3.6 2.4.0 2.4.2 2.5.3 2.6.3 2.6.5)
+for item in ${RUBYS[@]}; do
+  rbenv install $item
+done
 
+# nodebrew
+NODES=(v5.10.0 v6.1.0 v6.9.5 v6.15.0 v12.3.1 v12.11.1 v12.12.0 v13.9.0 )
+for item in ${NODES[@]}; do
+  nodebrew use $item
+done
+
+# python系
+PYTHONS=(3.7.0)
+for item in ${PYTHONS[@]}; do
+  pyenv install $item
+done
 
 cat << END
 
