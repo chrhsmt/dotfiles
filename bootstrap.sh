@@ -14,3 +14,5 @@ WORKDIR=~/src/github.com/chrhsmt/dotfiles
 mkdir -p $WORKDIR
 git clone https://github.com/chrhsmt/dotfiles.git $WORKDIR
 cd $WORKDIR
+
+./install.sh
